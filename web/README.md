@@ -21,26 +21,18 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
+## 问题记录
 
-```sh
-npm install
-```
+  + https://juejin.cn/post/7205094404415488058
+  + project: ['./tsconfig.json', './tsconfig.app.json', './tsconfig.config.json', './tsconfig.vitest.json'];
 
-### Compile and Hot-Reload for Development
 
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+  + ts 无法识别vuex => 直接定义 vuex.d.ts, 引入vuex/types/*
+  ```typescript
+    declare module 'vuex' {
+      export * from 'vuex/types/index.d.ts';
+      export * from 'vuex/types/helpers.d.ts';
+      export * from 'vuex/types/logger.d.ts';
+      export * from 'vuex/types/vue.d.ts';
+    }
+  ```

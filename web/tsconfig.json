@@ -1,11 +1,41 @@
 {
   "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
+  "extends": ["@vue/tsconfig/tsconfig.dom.json", "@tsconfig/node18/tsconfig.json"],
+  "include": [
+    "vite.config.*",
+    "vitest.config.*",
+    "cypress.config.*",
+    "nightwatch.conf.*",
+    "playwright.config.*",
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    ".eslintrc.*"
+  ],
+  "exclude": [
+    "src/**/__tests__/*",
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@types/*": ["./src/@types/*"]
     },
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ]
+    "module": "ESNext",
+    "types": [
+      "node"
+    ]
+  }
+
+  // references 这种引入方式会导致node相关的模块和其他package识别不了*.d.ts
+  // "references": [
+  //   {
+  //     "path": "./tsconfig.node.json"
+  //   },
+  //   {
+  //     "path": "./tsconfig.app.json"
+  //   }
+  // ]
 }
+  
